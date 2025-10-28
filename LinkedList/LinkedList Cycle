@@ -1,0 +1,24 @@
+class Solution {
+public:
+    bool hasCycle(ListNode *head) {
+        ListNode* fast = head;
+        ListNode* slow = head;
+
+        while(fast != NULL && fast->next != NULL){
+            slow = slow->next;
+            fast = fast->next->next;
+
+            if(slow == fast)
+                return true;
+        }
+        return false;
+    }
+};
+
+/*
+This algorithm uses two pointers, fast and slow, to traverse the linked list.
+The fast pointer moves twice as fast as the slow pointer. If there is a cycle,
+the fast pointer will eventually catch up to the slow pointer. If there is no
+cycle, the fast pointer will reach the end of the list, and the function will
+return false. This algorithm is an efficient way to detect cycles in a singly-linked list.
+*/
